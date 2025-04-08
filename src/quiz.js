@@ -39,4 +39,29 @@ class Quiz {
   hasEnded() {
     return this.currentQuestionIndex >= this.questions.length;
   }
+
+
+filterQuestionsByDifficulty(difficulty) {
+  if (typeof difficulty === 'number' && difficulty >= 1 && difficulty <= 3) {
+    this.questions = this.questions.filter(question => question.difficulty === difficulty);
+  };
+};
+
+
+
+averageDifficulty() {
+  if (this.questions.length === 0) return 0;
+
+  const totalDifficulty = this.questions.reduce((accumulator, question) => {
+    return accumulator + question.difficulty;
+  }, 0);
+
+  return totalDifficulty / this.questions.length;
 }
+}
+
+
+
+
+
+
